@@ -14,6 +14,6 @@ Gone are the days of one person trying to get people together and having to jump
 1. 'vagrant ssh' into the machine
 2. cd /etc/apache2/sites-available
 3. edit the file (ex. 'vi default', hope you know basic vi)
-  1. navigate to .<Directory /var/www/.> 
+  1. navigate to \<Directory /var/www/\> 
   2. Change 'AllowOverride None' to 'AllowOverride All'
 3. sudo service apache2 restart
