@@ -5,3 +5,8 @@ Gone are the days of one person trying to get people together and having to jump
 
 
 ==================
+#Installation Steps
+1. Go to https://github.com/DJ2Studios/GEMVagrant to download the vagrant script
+2. Run the vagrant script with 'vagrant up'
+  1. Use 'vagrant reload --provision' if necessary
+3. Go to localhost:3000 to access the website
