@@ -4,7 +4,6 @@ It provides you with a turn-key solution to your own custom calendar, easy visua
 Gone are the days of one person trying to get people together and having to jump through hoops just to organize your friends. All of your scheduling and communication applications have hyperconverged to create GEM, your schedule's new best friend.
 
 
-==================
 #Installation Steps
 1. Go to https://github.com/DJ2Studios/GEMVagrant to download the vagrant script
 2. Run the vagrant script with 'vagrant up'
