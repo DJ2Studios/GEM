@@ -9,6 +9,7 @@ Gone are the days of one person trying to get people together and having to jump
 2. Run the vagrant script with 'vagrant up'
   1. Use 'vagrant reload --provision' if necessary
 3. Go to localhost:3000 to access the website
+
 ##Slim Setup
 1. 'vagrant ssh' into the machine
 2. cd /etc/apache2/sites-available
