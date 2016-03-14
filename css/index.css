@@ -1,0 +1,17 @@
+#header {
+    width: 100%;
+    position: fixed;
+}
+#nav {
+    float: right;
+    margin-right: 10px;
+}
+#nav ul {
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+}
+#nav li {
+    float: left;
+    padding-left: 21px;
+}
