@@ -1,5 +1,4 @@
 import {Component} from 'angular2/core';
-import { Router } from 'angular2/router';
 
 @Component({
 	selector: 'page-home',
@@ -8,7 +7,4 @@ import { Router } from 'angular2/router';
 
 
 export class HomePageComponent {
-	constructor(
-		private _router: Router){
-	}
 }

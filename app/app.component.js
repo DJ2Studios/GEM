@@ -42,7 +42,7 @@ System.register(['angular2/core', 'angular2/router', './navbar.component.ts', '.
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'application',
-                        template: "\n\t\t<navbar></navbar>\n\t\t<sidebar id=\"sidebar-wrapper\"></sidebar>\n\t\t<a [routerLink]=\"['Event']\">Events</a>\n\t\t<button (click)=\"goBack()\">Back</button>\n\t\t<router-outlet></router-outlet>\n\t",
+                        template: "\n\t\t<navbar></navbar>\n\t\t<sidebar id=\"sidebar-wrapper\"></sidebar>\n\t\t<button (click)=\"goBack()\">Back</button>\n\t\t<router-outlet></router-outlet>\n\t",
                         styleUrls: ['components/css/navigation.css'],
                         directives: [router_1.ROUTER_DIRECTIVES, navbar_component_ts_1.NavbarComponent, sidebar_component_ts_1.SidebarComponent, mainpage_component_ts_1.MainPageComponent, eventpage_component_ts_1.EventPageComponent]
                     }),
@@ -50,7 +50,8 @@ System.register(['angular2/core', 'angular2/router', './navbar.component.ts', '.
                         {
                             path: '/home',
                             name: 'Home',
-                            component: mainpage_component_ts_1.MainPageComponent
+                            component: mainpage_component_ts_1.MainPageComponent,
+                            useAsDefault: true
                         },
                         {
                             path: '/event',

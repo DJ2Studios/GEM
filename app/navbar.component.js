@@ -27,7 +27,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 NavbarComponent = __decorate([
                     core_1.Component({
                         selector: 'navbar',
-                        templateUrl: ['components/views/navbar.html'],
+                        templateUrl: ['components/html/navbar.html'],
                         styleUrls: ['components/css/navigation.css'],
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 

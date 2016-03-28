@@ -11,7 +11,6 @@ import {EventPageComponent} from './eventpage.component.ts';
 	template: `
 		<navbar></navbar>
 		<sidebar id="sidebar-wrapper"></sidebar>
-		<a [routerLink]="['Event']">Events</a>
 		<button (click)="goBack()">Back</button>
 		<router-outlet></router-outlet>
 	`,
@@ -23,7 +22,8 @@ import {EventPageComponent} from './eventpage.component.ts';
 	{
 		path: '/home',
 		name: 'Home',
-		component: MainPageComponent
+		component: MainPageComponent,
+		useAsDefault: true
 	},
 	{ 	
 		path: '/event',

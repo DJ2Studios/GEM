@@ -49,6 +49,7 @@ html,body,application {
 }
 
 .eventList {
+	cursor:pointer;
 	background-color:#7D7D7D;
 	height:100px;
 	margin:10px;
