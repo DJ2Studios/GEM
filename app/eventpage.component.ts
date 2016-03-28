@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 
 @Component({
-	selector: 'event-page',
+	selector: 'page-event',
 	template: `This will be an event page
 			`
 })

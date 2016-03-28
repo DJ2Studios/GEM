@@ -11,27 +11,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var MainPageComponent;
+    var CalendarPageComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            MainPageComponent = (function () {
-                function MainPageComponent() {
+            CalendarPageComponent = (function () {
+                function CalendarPageComponent() {
                 }
-                MainPageComponent = __decorate([
+                CalendarPageComponent = __decorate([
                     core_1.Component({
-                        selector: 'main-page',
-                        template: "Nothing to see here\n\t\t\t"
+                        selector: 'page-calendar',
+                        template: "Here you can view and (maybe update it if we want to do this feature?) your calendar"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], MainPageComponent);
-                return MainPageComponent;
+                ], CalendarPageComponent);
+                return CalendarPageComponent;
             }());
-            exports_1("MainPageComponent", MainPageComponent);
+            exports_1("CalendarPageComponent", CalendarPageComponent);
         }
     }
 });
-//# sourceMappingURL=mainpage.component.js.map
+//# sourceMappingURL=calendarpage.component.js.map

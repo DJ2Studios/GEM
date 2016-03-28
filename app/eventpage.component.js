@@ -23,7 +23,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 }
                 EventPageComponent = __decorate([
                     core_1.Component({
-                        selector: 'event-page',
+                        selector: 'page-event',
                         template: "This will be an event page\n\t\t\t"
                     }), 
                     __metadata('design:paramtypes', [])
