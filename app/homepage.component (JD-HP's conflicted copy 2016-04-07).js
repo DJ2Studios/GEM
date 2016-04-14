@@ -41,7 +41,7 @@ System.register(['angular2/core', 'angular2/router', './event.service.ts'], func
                     core_1.Component({
                         selector: 'page-home',
                         template: "\n\t\t<div class=\"flex header-image\"> <span> Welcome, User </span> </div>\n\t\t<div class=\"flex\">\n\t\t\t\t<ul class=\"event-wrapper\">\n\t\t\t\t\t<li *ngFor=\"#event of events\" [routerLink]=\"['Event', {'id': event.id }]\" class=\"event-block\"> {{event.title}} </li>\n\t\t\t\t\t<li class=\"event-block create-event\"> + </li>\n\t\t\t\t</ul>\n\t\t</div>",
-                        styleUrls: ['views/css/pages.css'],
+                        styleUrls: ['components/css/pages.css'],
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [event_service_ts_1.EventService])

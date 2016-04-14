@@ -1,17 +1,29 @@
 import {Component} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {EventService} from './event.service.ts';
+import {Event} from './event.ts';
 
 @Component({
 	selector: 'sidebar',
-	templateUrl: ['components/html/sidebar.html'],
-	styleUrls: ['components/css/navigation.css'],
-	directives: [ROUTER_DIRECTIVES]
+	templateUrl: ['views/html/sidebar.html'],
+	styleUrls: ['views/css/navigation.css'],
+	directives: [ROUTER_DIRECTIVES],
+	providers: [EventService]
 })
 
 export class SidebarComponent { 
 	show:boolean;
 	show = true;
-	events = EVENTS;
+	events: Event[];
+
+	constructor(private _eventService: EventService) {
+	}
+
+	ngOnInit() {
+		this._eventService.getEvents()
+			.then(events => this.events = events);
+	}
+	
 	toggle() { 
 		this.show = !this.show;
 		if (!this.show) {
@@ -31,9 +43,3 @@ export class SidebarComponent {
 		}
 	}
  }
-
-var EVENTS = [
-	{ "title": "Torchys" },
-	{ "title": "GEM dev Meeting" },
-	{ "title": "EWB Plant Lab Official Meeting" }
-];

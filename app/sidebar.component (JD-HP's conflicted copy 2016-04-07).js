@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/router', './event.service.ts'], func
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, router_1, event_service_ts_1;
-    var HomePageComponent;
+    var SidebarComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -24,32 +24,47 @@ System.register(['angular2/core', 'angular2/router', './event.service.ts'], func
                 event_service_ts_1 = event_service_ts_1_1;
             }],
         execute: function() {
-            HomePageComponent = (function () {
-                function HomePageComponent(_eventService) {
+            SidebarComponent = (function () {
+                function SidebarComponent(_eventService) {
                     this._eventService = _eventService;
+                    this.show = true;
                 }
-                HomePageComponent.prototype.ngOnInit = function () {
+                SidebarComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._eventService.getEvents()
                         .then(function (events) { return _this.events = events; });
                 };
-                HomePageComponent.prototype.goBack = function () {
-                    console.log(window.history);
-                    window.history.back();
+                SidebarComponent.prototype.toggle = function () {
+                    this.show = !this.show;
+                    if (!this.show) {
+                        $("#sidebar-wrapper").css({ "margin-left": "-300px" });
+                        $("main-page").css({ "width": "calc(100% - 30px)" });
+                        $("#sidebar-wrapper").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function () {
+                            $(".expand").css({ "width": "30px" });
+                            $("#sidebar-icon").css({ "opacity": "1" });
+                        });
+                    }
+                    else {
+                        $("#sidebar-wrapper").css({ "margin-left": "0" });
+                        $("main-page").css({ "width": "calc(100% - 315px)" });
+                        $(".expand").css({ "width": "15px" });
+                        $("#sidebar-icon").css({ "opacity": "0" });
+                    }
                 };
-                HomePageComponent = __decorate([
+                SidebarComponent = __decorate([
                     core_1.Component({
-                        selector: 'page-home',
-                        template: "\n\t\t<div class=\"flex header-image\"> <span> Welcome, User </span> </div>\n\t\t<div class=\"flex\">\n\t\t\t\t<ul class=\"event-wrapper\">\n\t\t\t\t\t<li *ngFor=\"#event of events\" [routerLink]=\"['Event', {'id': event.id }]\" class=\"event-block\"> {{event.title}} </li>\n\t\t\t\t\t<li class=\"event-block create-event\"> + </li>\n\t\t\t\t</ul>\n\t\t</div>",
-                        styleUrls: ['views/css/pages.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        selector: 'sidebar',
+                        templateUrl: ['components/html/sidebar.html'],
+                        styleUrls: ['components/css/navigation.css'],
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        providers: [event_service_ts_1.EventService]
                     }), 
                     __metadata('design:paramtypes', [event_service_ts_1.EventService])
-                ], HomePageComponent);
-                return HomePageComponent;
+                ], SidebarComponent);
+                return SidebarComponent;
             }());
-            exports_1("HomePageComponent", HomePageComponent);
+            exports_1("SidebarComponent", SidebarComponent);
         }
     }
 });
-//# sourceMappingURL=homepage.component.js.map
+//# sourceMappingURL=sidebar.component.js.map

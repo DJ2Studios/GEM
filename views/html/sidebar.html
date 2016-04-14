@@ -1,7 +1,7 @@
 <div id="sidebar">
 	<h2>Your Events</h2>
 	<ul>
-		<li *ngFor="#event of events" [routerLink]="['Event']" class="eventList">
+		<li *ngFor="#event of events" [routerLink]="['Event', {'id': event.id }]" class="eventList">
 			<h3> {{event.title}} </h3>
 		</li>
 	</ul>

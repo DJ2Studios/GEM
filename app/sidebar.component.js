@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './event.service.ts'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,8 +10,8 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
-    var SidebarComponent, EVENTS;
+    var core_1, router_1, event_service_ts_1;
+    var SidebarComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -19,13 +19,21 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (event_service_ts_1_1) {
+                event_service_ts_1 = event_service_ts_1_1;
             }],
         execute: function() {
             SidebarComponent = (function () {
-                function SidebarComponent() {
+                function SidebarComponent(_eventService) {
+                    this._eventService = _eventService;
                     this.show = true;
-                    this.events = EVENTS;
                 }
+                SidebarComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this._eventService.getEvents()
+                        .then(function (events) { return _this.events = events; });
+                };
                 SidebarComponent.prototype.toggle = function () {
                     this.show = !this.show;
                     if (!this.show) {
@@ -46,20 +54,16 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 SidebarComponent = __decorate([
                     core_1.Component({
                         selector: 'sidebar',
-                        templateUrl: ['components/html/sidebar.html'],
-                        styleUrls: ['components/css/navigation.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        templateUrl: ['views/html/sidebar.html'],
+                        styleUrls: ['views/css/navigation.css'],
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        providers: [event_service_ts_1.EventService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [event_service_ts_1.EventService])
                 ], SidebarComponent);
                 return SidebarComponent;
             }());
             exports_1("SidebarComponent", SidebarComponent);
-            EVENTS = [
-                { "title": "Torchys" },
-                { "title": "GEM dev Meeting" },
-                { "title": "EWB Plant Lab Official Meeting" }
-            ];
         }
     }
 });

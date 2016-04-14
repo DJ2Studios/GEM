@@ -21,10 +21,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             CalendarPageComponent = (function () {
                 function CalendarPageComponent() {
                 }
+                CalendarPageComponent.prototype.goBack = function () {
+                    console.log(window.history);
+                    window.history.back();
+                };
                 CalendarPageComponent = __decorate([
                     core_1.Component({
                         selector: 'page-calendar',
-                        template: "Here you can view and (maybe update it if we want to do this feature?) your calendar"
+                        template: "<button (click)=\"goBack()\">Back</button>\n\tHere you can view and (maybe update it if we want to do this feature?) your calendar"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], CalendarPageComponent);

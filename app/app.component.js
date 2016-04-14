@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './navbar.component.ts', './sidebar.component.ts', './homepage.component.ts', './eventpage.component.ts', './calendarpage.component.ts'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './navbar.component.ts', './sidebar.component.ts', './homepage.component.ts', './eventpage.component.ts', './calendarpage.component.ts', './userpage.component.ts', './event.service.ts'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './navbar.component.ts', '.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, navbar_component_ts_1, sidebar_component_ts_1, homepage_component_ts_1, eventpage_component_ts_1, calendarpage_component_ts_1;
+    var core_1, router_1, navbar_component_ts_1, sidebar_component_ts_1, homepage_component_ts_1, eventpage_component_ts_1, calendarpage_component_ts_1, userpage_component_ts_1, event_service_ts_1;
     var AppComponent;
     return {
         setters:[
@@ -34,20 +34,24 @@ System.register(['angular2/core', 'angular2/router', './navbar.component.ts', '.
             },
             function (calendarpage_component_ts_1_1) {
                 calendarpage_component_ts_1 = calendarpage_component_ts_1_1;
+            },
+            function (userpage_component_ts_1_1) {
+                userpage_component_ts_1 = userpage_component_ts_1_1;
+            },
+            function (event_service_ts_1_1) {
+                event_service_ts_1 = event_service_ts_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
                 }
-                AppComponent.prototype.goBack = function () {
-                    window.history.back();
-                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'application',
-                        template: "\n\t\t<navbar></navbar>\n\t\t<sidebar id=\"sidebar-wrapper\"></sidebar>\n\t\t<button (click)=\"goBack()\">Back</button>\n\t\t<router-outlet></router-outlet>\n\t",
-                        styleUrls: ['components/css/navigation.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES, navbar_component_ts_1.NavbarComponent, sidebar_component_ts_1.SidebarComponent, homepage_component_ts_1.HomePageComponent, eventpage_component_ts_1.EventPageComponent, calendarpage_component_ts_1.CalendarPageComponent]
+                        template: "\n\t\t<navbar></navbar>\n\t\t<sidebar id=\"sidebar-wrapper\"></sidebar>\n\t\t<router-outlet></router-outlet>\n\t",
+                        styleUrls: ['views/css/navigation.css'],
+                        providers: [event_service_ts_1.EventService],
+                        directives: [router_1.ROUTER_DIRECTIVES, navbar_component_ts_1.NavbarComponent, sidebar_component_ts_1.SidebarComponent, homepage_component_ts_1.HomePageComponent, eventpage_component_ts_1.EventPageComponent, calendarpage_component_ts_1.CalendarPageComponent, userpage_component_ts_1.UserPageComponent]
                     }),
                     router_1.RouteConfig([
                         {
@@ -65,6 +69,11 @@ System.register(['angular2/core', 'angular2/router', './navbar.component.ts', '.
                             path: '/calendar',
                             name: 'Calendar',
                             component: calendarpage_component_ts_1.CalendarPageComponent
+                        },
+                        {
+                            path: '/user',
+                            name: 'User',
+                            component: userpage_component_ts_1.UserPageComponent
                         }
                     ]), 
                     __metadata('design:paramtypes', [])

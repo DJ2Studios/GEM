@@ -1,0 +1,36 @@
+.flex {
+	display:flex;
+	justify-content:center;
+}
+.header-image {
+	color:black;
+	height:33%;
+	background-color:gray;
+	text-align:center;
+	align-items:flex-end;
+	justify-content:center;
+	background-image:url("img/bground2.jpg");
+	background-size:cover;
+}
+.header-image > span {
+	background-color:white;
+	font-size:24pt;
+}
+.event-wrapper {
+	display: flex;
+	justify-content:center;
+	flex-wrap:wrap;
+	padding-top:10vh;
+	padding-left:0;
+	list-style:none;
+}
+.event-block {
+	border-radius:15px;
+	color:white;
+	cursor:pointer;
+	text-align:center;
+	margin:10px;
+	width:200px;
+	height:200px;
+	background-color:gray;
+}

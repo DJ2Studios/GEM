@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,33 +10,34 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
-    var NavbarComponent;
+    var core_1;
+    var EventService, EVENTS;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (router_1_1) {
-                router_1 = router_1_1;
             }],
         execute: function() {
-            NavbarComponent = (function () {
-                function NavbarComponent() {
+            EventService = (function () {
+                function EventService() {
                 }
-                NavbarComponent = __decorate([
-                    core_1.Component({
-                        selector: 'navbar',
-                        templateUrl: ['views/html/navbar.html'],
-                        styleUrls: ['views/css/navigation.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES]
-                    }), 
+                EventService.prototype.getEvents = function () { return Promise.resolve(EVENTS); };
+                EventService.prototype.getEvent = function (id) {
+                    return Promise.resolve(EVENTS).then(function (events) { return events.filter(function (event) { return event.id === id; })[0]; });
+                };
+                EventService = __decorate([
+                    core_1.Injectable(), 
                     __metadata('design:paramtypes', [])
-                ], NavbarComponent);
-                return NavbarComponent;
+                ], EventService);
+                return EventService;
             }());
-            exports_1("NavbarComponent", NavbarComponent);
+            exports_1("EventService", EventService);
+            EVENTS = [
+                { 'id': 11, 'title': 'Torchys with friends' },
+                { 'id': 12, 'title': 'EWB General Meeting' },
+                { 'id': 13, 'title': 'Pickup volleyball game' }
+            ];
         }
     }
 });
-//# sourceMappingURL=navbar.component.js.map
+//# sourceMappingURL=event.service.js.map

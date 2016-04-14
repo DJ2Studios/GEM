@@ -1,22 +1,24 @@
 import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES, RouteParams} from 'angular2/router';
 
 import {NavbarComponent} from './navbar.component.ts';
 import {SidebarComponent} from './sidebar.component.ts';
 import {HomePageComponent} from './homepage.component.ts';
 import {EventPageComponent} from './eventpage.component.ts';
 import {CalendarPageComponent} from './calendarpage.component.ts';
+import {UserPageComponent} from './userpage.component.ts';
+import {EventService} from './event.service.ts';
 
 @Component({
 	selector: 'application',
 	template: `
 		<navbar></navbar>
 		<sidebar id="sidebar-wrapper"></sidebar>
-		<button (click)="goBack()">Back</button>
 		<router-outlet></router-outlet>
 	`,
-	styleUrls: ['components/css/navigation.css'],
-	directives: [ROUTER_DIRECTIVES, NavbarComponent, SidebarComponent, HomePageComponent, EventPageComponent, CalendarPageComponent]
+	styleUrls: ['views/css/navigation.css'],
+	providers: [EventService],
+	directives: [ROUTER_DIRECTIVES, NavbarComponent, SidebarComponent, HomePageComponent, EventPageComponent, CalendarPageComponent, UserPageComponent]
 })
 
 @RouteConfig([
@@ -36,10 +38,12 @@ import {CalendarPageComponent} from './calendarpage.component.ts';
 		name: 'Calendar',
 		component: CalendarPageComponent
 	}
+	{
+		path: '/user',
+		name: 'User',
+		component: UserPageComponent
+	}
 ])
 
 export class AppComponent { 
-	goBack() {
-		window.history.back();
-	}
 }
