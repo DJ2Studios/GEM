@@ -1,50 +1,59 @@
-DROP DATABASE IF EXISTS GEM_DB;
-CREATE DATABASE GEM_DB;
-USE GEM_DB;
+DROP DATABASE IF EXISTS gem;
+
+CREATE DATABASE gem;
+
+USE gem;
 
 create table User (
-	id INT,
-	first_name VARCHAR(50),
-	last_name VARCHAR(50),
-	email VARCHAR(100)
+	id INT NOT NULL AUTO_INCREMENT,
+	first_name VARCHAR(25) NOT NULL,
+	last_name VARCHAR(25) NOT NULL,
+	email VARCHAR(50) NOT NULL,
+	password VARCHAR(50) NOT NULL,
+	CONSTRAINT User_pk PRIMARY KEY (id)
 );
 
 create table userEventLink (
-	user_id INT,
-	event_id INT
+	userID INT NOT NULL AUTO_INCREMENT,
+	eventID INT NOT NULL,
+	CONSTRAINT userEventLink_pk PRIMARY KEY (userID, eventID)
 );
 
 create table comments (
-	id INT,
-	text TEXT,
-	creator_id INT,
-	event_id INT,
-	reply_id INT,
-	rating INT
+	id INT NOT NULL AUTO_INCREMENT,
+	`text` VARCHAR(250) NOT NULL,
+	creatorID INT NOT NULL,
+	eventID INT NOT NULL,
+	replyID INT NULL,
+	rating BOOLEAN NULL,
+	CONSTRAINT comments_pk PRIMARY KEY (id)
 );
 
 create table event (
-	id INT,
-	name VARCHAR(50),
-	description VARCHAR(255),
-	time VARCHAR(50),
-	poll_id INT,
-	creator_id INT
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(50) NOT NULL,
+	`desc` VARCHAR(250) NOT NULL,
+	time TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+	pollID INT NULL,
+	creatorID INT NOT NULL,
+	CONSTRAINT event_pk PRIMARY KEY (id)
 );
 
 create table poll (
-	id INT,
-	event_id INT
+	id INT NOT NULL AUTO_INCREMENT,
+	eventID INT NOT NULL,
+	CONSTRAINT poll_pk PRIMARY KEY (id)
 );
 
 create table slot (
-	id INT,
-	votes INT,
-	start_time VARCHAR(50),
-	end_time VARCHAR(50),
-	poll_id INT
+	id INT NOT NULL AUTO_INCREMENT,
+	votes INT NOT NULL,
+	startTime VARCHAR(50) NOT NULL,
+	endTime VARCHAR(50) NOT NULL,
+	pollID INT NOT NULL,
+	CONSTRAINT slot_pk PRIMARY KEY (id)
 );
 
 create table settings (
-	settings TEXT
+	settings TEXT NOT NULL
 );
