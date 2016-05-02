@@ -231,7 +231,7 @@ $app->post('/vote',
             $getVoteQuery->bindParam(':optionID', $optionID);
             $getVoteQuery->execute();
 
-            $votes = $getVoteQuery->fetchALL(PDO::FETCH_ASSOC);
+            $votes = $getVoteQuery->fetchAll(PDO::FETCH_ASSOC);
             $votes = $votes[0]['votes']+1;
 
             $query = $db->prepare(
@@ -250,6 +250,45 @@ $app->post('/vote',
         catch (PDOException $e) {
             $outputJSON = array('votes'=>-1);
             echo json_encode($outputJSON);
+        }
+    });
+
+
+$app->post('/rateComment',
+    function () {
+        global $db;
+        try{
+            $commentID = $_POST['commentID'];
+            $up = $_POST['up'];
+
+            if($up)
+                $up = 1;            
+            else
+                $up = -1;
+            $getRatingQuery = $db->prepare("SELECT rating FROM comments WHERE id = $commentID");
+            $getRatingQuery->bindParam(':commentID', $commentID);
+            $getRatingQuery->execute();
+
+            $rating = $getRatingQuery->fetchAll(PDO::FETCH_ASSOC);
+            $rating = $rating[0]['rating']+intval($up);
+
+            $query = $db->prepare(
+                "UPDATE comments
+                SET rating = $rating
+                WHERE id = $commentID"
+                );
+
+            $query->bindParam(':commentID', $commentID);
+            $query->bindParam(':rating', $rating);
+
+            $query->execute();
+
+            $outputJSON = array('rating'=>$rating);
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('rating'=>-1);
+            echo "Error in rateComment";
         }
     });
 
