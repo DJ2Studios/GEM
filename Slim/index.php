@@ -110,5 +110,31 @@ $app->post('/createEvent',
     });
 
 
+$app->post('/addUserToEvent',
+    function () {
+        global $db;
+        try{
+            $userID = $_POST['userID'];
+            $eventID = $_POST['eventID'];
+
+            $query = $db->prepare(
+                "INSERT INTO userEventLink (userId, eventID)
+                VALUES($userID, $eventID)"
+                );
+
+            $query->bindParam(':userID', $userID);
+            $query->bindParam(':eventID', $eventID);
+
+            $query->execute();
+            $outputJSON = array('status'=>'success');
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('status'=>'failure');
+            echo json_encode($outputJSON);
+        }
+    });
+
+
 $app->run();
 ?>
