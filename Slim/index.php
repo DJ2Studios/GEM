@@ -168,5 +168,57 @@ $app->post('/addComment',
     });
 
 
+$app->post('/createPoll',
+    function () {
+    global $db;
+        try{
+            $eventID = $_POST['eventID'];
+
+            $query = $db->prepare(
+                "INSERT INTO poll (eventID)
+                VALUES($eventID)");
+
+            $query->bindParam(':eventID', $eventID);
+
+            $query->execute();
+
+            $outputJSON = array('id'=>$db->lastInsertID());
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('id'=>-1);
+            echo json_encode($outputJSON);
+        }
+    });
+
+//not exactly how the option implementation is supposed to work
+$app->post('/createPollOption',
+    function () {
+    global $db;
+        try{
+            $pollID = $_POST['pollID'];
+            $startTimeDate = $_POST['startTimeDate'];
+            $endTimeDate = $_POST['endTimeDate'];
+
+            $query = $db->prepare(
+                "INSERT INTO slot (pollID, votes, startTime, endTime) VALUES ('$pollID', 0, '$startTimeDate', '$endTimeDate')");
+
+            $query->bindParam(':pollID', $pollID);
+            $query->bindParam(':startTimeDate', $startTimeDate);
+            $query->bindParam(':endTimeDate', $endTimeDate);
+
+            $query->execute();
+
+            $outputJSON = array('id'=>$db->lastInsertID());
+            echo json_encode($outputJSON);
+
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('id'=>-1);
+            echo json_encode($outputJSON);
+        }
+    });
+
+
 $app->run();
 ?>
