@@ -219,6 +219,40 @@ $app->post('/createPollOption',
         }
     });
 
+//where does poll option come from?
+$app->post('/vote',
+    function () {
+        global $db;
+        try{
+            $pollID = $_POST['pollID'];
+            $optionID = $_POST['optionID'];
+
+            $getVoteQuery = $db->prepare("SELECT votes FROM slot WHERE id=:optionID");
+            $getVoteQuery->bindParam(':optionID', $optionID);
+            $getVoteQuery->execute();
+
+            $votes = $getVoteQuery->fetchALL(PDO::FETCH_ASSOC);
+            $votes = $votes[0]['votes']+1;
+
+            $query = $db->prepare(
+                "UPDATE slot SET votes=$votes WHERE id=$optionID"
+                );
+
+            $query->bindParam(':votes', $votes);
+            $query->bindParam(':optionID', $optionID);
+
+            $query->execute();
+
+            $outputJSON = array('votes'=>$votes);
+            echo json_encode($outputJSON);
+
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('votes'=>-1);
+            echo json_encode($outputJSON);
+        }
+    });
+
 
 $app->run();
 ?>
