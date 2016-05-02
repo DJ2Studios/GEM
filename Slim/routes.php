@@ -1,6 +1,9 @@
 <?php
 // Routes
 
+require 'vendor/autoload.php';
+$app = new \Slim\Slim();
+
 //$app->get('/[{name}]', function ($request, $response, $args) 
 $app->get('/hello', function ($request, $response, $args) {
     // Sample log message
