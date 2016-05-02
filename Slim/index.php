@@ -79,5 +79,36 @@ $app->post('/login',
     });
 
 
+//Poll_id is currently nullable because wasn't sure how to get that value. Event.id is auto incremented,
+//so poll_id can not be as well
+$app->post('/createEvent',
+    function () {
+        global $db;
+        try {
+            $name = $_POST['name'];
+            $desc = $_POST['desc'];
+            $creatorID = $_POST['creatorID'];
+
+            $query = $db->prepare(
+                "INSERT INTO event (name, `desc`, creatorID)
+                VALUES('$name', '$desc', '$creatorID')"
+                );
+
+            $query->bindParam(':name', $name);
+            $query->bindParam(':desc', $desc);
+            $query->bindParam(':creatorID', $creatorID);
+
+            $query->execute();
+            $outputJSON = array('id'=>$db->lastInsertID());
+            echo json_encode($outputJSON);
+
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('id'=>-1);
+            echo json_encode($outputJSON);
+        }
+    });
+
+
 $app->run();
 ?>
