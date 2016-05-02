@@ -135,6 +135,38 @@ $app->post('/addUserToEvent',
         }
     });
 
+//where to get comments.rating?
+$app->post('/addComment',
+    function () {
+        global $db;
+        try{
+            $userID = $_POST['userID'];
+            $text = $_POST['text'];
+            $eventID = $_POST['eventID'];
+            $replyID = $_POST['replyID'];
+
+            $query = $db->prepare(
+                "INSERT INTO comments (`text`, creatorID, eventID, replyID, rating)
+                VALUES('$text', '$userID', '$eventID', '$replyID', 0)"
+                );
+
+            $query->bindParam(':userID', $userID);
+            $query->bindParam(':eventID', $eventID);
+            $query->bindParam(':replyID', $replyID);
+            $query->bindParam(':text', $text);
+
+            $query->execute();
+
+            $outputJSON = array('id'=>$db->lastInsertID());
+            echo json_encode($outputJSON);
+
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('id'=>-1);
+            echo json_encode($outputJSON);
+        }
+    });
+
 
 $app->run();
 ?>
