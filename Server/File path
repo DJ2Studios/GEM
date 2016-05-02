@@ -1,0 +1,4 @@
+These are all file paths from screen as soon as you log into server
+
+Git directory: cd /GEM 
+Slim directory on server: ../../var/www/zero-to-slim.dev
