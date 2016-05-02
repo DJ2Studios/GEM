@@ -28,3 +28,5 @@ $container['gem'] = function ($c) {
 
 	return $db;
 };
+
+?>

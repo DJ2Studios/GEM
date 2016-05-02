@@ -38,10 +38,13 @@ $app->post('/createUser',
         
             $query->execute();
 
-            echo "User created";
+	    $id = $db->lastInsertID();
+	    $outputJSON = array('ID'=>$id);
+            echo json_encode($outputJSON);
         }
         catch (PDOException $e) {
-            echo "Error in createUser";
+	    $outputJSON = array('ID'=>-1);
+            echo json_encode($outputJSON);
         }
 
     });
@@ -67,13 +70,21 @@ $app->post('/login',
 
             $query->execute();
 
+	    $outputJSON = array();
             if($query->rowCount() == 1)
-                echo "Login success";
+		{
+		    $outputJSON["id"] = $query[0]['id'];
+                    echo json_encode($outputJSON);
+		}
             else
-                echo "Invalid username or password"
+		}
+                    $outputJSON["id"] = -1;
+		    echo json_encode($outputJSON);
+		}
         }
         catch (PDOException $e) {
-            echo "Error in login";
+	    $outputJSON = array('id'=>-1);
+            echo json_encode($outputJSON);
         }
 
     });
