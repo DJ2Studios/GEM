@@ -426,5 +426,33 @@ $app->post('/setEventTime',
     });
 
 
+$app->post('/setEventDesc',
+    function () {
+        global $db;
+        try{
+            $eventID = $_POST['eventID'];
+            $desc = $_POST['desc'];
+
+            $query = $db->prepare(
+                "UPDATE event
+                SET `desc` = '$desc'
+                WHERE id = $eventID"
+                );
+
+            $query->bindParam(':commentID', $commentID);
+            $query->bindParam(':desc', $desc);
+
+            $query->execute();
+
+            $outputJSON = array('success'=>true);
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('success'=>false);
+            echo json_encode($outputJSON);
+        }
+    });
+
+
 $app->run();
 ?>
