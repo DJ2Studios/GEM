@@ -25,7 +25,7 @@ create table comments (
 	creatorID INT NOT NULL,
 	eventID INT NOT NULL,
 	replyID INT NULL,
-	rating BOOLEAN NULL,
+	rating INT NULL,
 	CONSTRAINT comments_pk PRIMARY KEY (id)
 );
 
