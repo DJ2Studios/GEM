@@ -561,5 +561,88 @@ $app->post('/getCommentsForEvent',
         }
     });
 
+$app->post('/getUsersForEvent',
+    function () {
+        global $db;
+        try{
+            $eventID = $_POST['eventID'];
+
+            $query = $db->prepare(
+                "SELECT u.id, u.first_name, u.last_name
+                FROM event e, userEventLink ue, User u
+                WHERE e.id = $eventID
+                AND e.id = ue.eventID
+                AND ue.userID = u.id"
+                );
+
+            $query->bindParam(':eventID', $eventID);
+
+            $query->execute();
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $outputJSON = array('users'=>$result);
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            echo "Error in getUsersForEvent";
+        }
+    });
+
+$app->post('/setPoll',
+    function () {
+        global $db;
+        try{
+            $eventID = $_POST['eventID'];
+            $pollID = $_POST['pollID'];
+
+            $query = $db->prepare(
+                "UPDATE event
+                SET pollID = $pollID
+                WHERE id = $eventID"
+                );
+
+            $query->bindParam(':eventID', $eventID);
+            $query->bindParam(':pollID', $pollID);
+
+            $query->execute();
+
+            $outputJSON = array('success'=>true);
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('success'=>false);
+            echo json_encode($outputJSON);
+        }
+    });
+
+
+//where does optionID come from?
+$app->post('/getPoll',
+    function () {
+        global $db;
+        try{
+            $eventID = $_POST['eventID'];
+
+            $query = $db->prepare(
+                "SELECT o.id, o.startTime, o.endTime, o.votes
+                 FROM slot o, event e
+                 WHERE o.pollID = e.pollID
+                 AND e.id = $eventID"
+                );
+
+            $query->bindParam(':eventID', $eventID);
+
+            $query->execute();
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $outputJSON = array('options'=>$result);
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            echo "Error in getPoll";
+        }
+    });
+
+
 $app->run();
 ?>
