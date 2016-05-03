@@ -293,5 +293,138 @@ $app->post('/rateComment',
     });
 
 
+$app->post('/deletePoll',
+    function () {
+        global $db;
+        try{
+            $pollID = $_POST['pollID'];
+
+            $query = $db->prepare(
+                "DELETE
+                FROM poll
+                WHERE id = $pollID"
+                );
+
+            $query->bindParam(':pollID', $pollID);
+
+            $query->execute();
+
+            $outputJSON = array('status'=>'success');
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('status'=>'failure');
+            echo json_encode($outputJSON);
+        }
+    });
+
+
+$app->post('/deleteEvent',
+    function () {
+        global $db;
+        try{
+            $eventID = $_POST['eventID'];
+
+            $query = $db->prepare(
+                "DELETE
+                FROM event
+                WHERE id = $eventID"
+                );
+
+            $query->bindParam(':eventID', $eventID);
+
+            $query->execute();
+
+            $outputJSON = array('status'=>'success');
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('status'=>'failure');
+            echo json_encode($outputJSON);
+        }
+    });
+
+
+$app->post('/deleteComment',
+    function () {
+        global $db;
+        try{
+            $commentID = $_POST['commentID'];
+
+            $query = $db->prepare(
+                "DELETE
+                FROM comments
+                WHERE id = $commentID"
+                );
+
+            $query->bindParam(':commentID', $commentID);
+
+            $query->execute();
+
+            $outputJSON = array('status'=>'success');
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('status'=>'failure');
+            echo json_encode($outputJSON);
+        }
+    });
+
+
+$app->post('/deletePollOption',
+    function () {
+        global $db;
+        try{
+            $optionID = $_POST['optionID'];
+
+            $query = $db->prepare(
+                "DELETE
+                FROM slot
+                WHERE id = $optionID"
+                );
+
+            $query->bindParam(':optionID', $optionID);
+
+            $query->execute();
+
+            $outputJSON = array('status'=>'success');
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('status'=>'failure');
+            echo json_encode($outputJSON);
+        }
+    });
+
+
+//Updated time is the input time
+$app->post('/setEventTime',
+    function () {
+        global $db;
+        try{
+            $eventID = $_POST['eventID'];
+            $time = $_POST['time'];
+
+            $query = $db->prepare(
+                "UPDATE event
+                SET time = '$time'
+                WHERE id = $eventID"
+                );
+
+            $query->bindParam(':eventID', $eventID);
+            $query->bindParam(':time', $time);
+
+            $query->execute();
+
+            $outputJSON = array('success'=>true);
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            $outputJSON = array('success'=>false);
+            echo json_encode($outputJSON);
+        }
+    });
+
+
 $app->run();
 ?>
