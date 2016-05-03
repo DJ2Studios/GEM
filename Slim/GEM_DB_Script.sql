@@ -57,3 +57,24 @@ create table slot (
 create table settings (
 	settings TEXT NOT NULL
 );
+
+insert into User (first_name, last_name, email, password) values('Drew', 'Fulsom', 'afulsom@smu.edu', 'password');
+insert into User (first_name, last_name, email, password) values('JD', 'Francis', 'jdsemail@smu.edu', 'password');
+insert into User (first_name, last_name, email, password) values('David', 'Kim', 'davidsemail@smu.edu', 'password');
+insert into User (first_name, last_name, email, password) values('Justin', 'Suh', 'justinsemail@smu.edu', 'password');
+
+insert into event (name, `desc`, creatorID) values ('Presentation', 'Presentation for this class', 1);
+insert into event (name, `desc`, creatorID) values ('Torchys', 'Getting food with the group', 2);
+insert into event (name, `desc`, creatorID) values ('Some other event', 'I got bored with coming up with events', 1);
+
+insert into userEventLink values (1, 1);
+insert into userEventLink values (2, 1);
+insert into userEventLink values (3, 1);
+insert into userEventLink values (4, 1);
+insert into userEventLink values (2, 2);
+insert into userEventLink values (3, 2);
+insert into userEventLink values (4, 2);
+insert into userEventLink values (1, 3);
+insert into userEventLink values (4, 3);
+
+
