@@ -454,5 +454,33 @@ $app->post('/setEventDesc',
     });
 
 
+$app->post('/getEventsForUser',
+    function () {
+        global $db;
+        try{
+            $userID = $_POST['userID'];
+
+            $query = $db->prepare(
+                "SELECT e.id, e.name, e.desc, e.time, e.creatorID
+                FROM event e, userEventLink ue, User u
+                WHERE u.id = $userID
+                AND u.id = ue.userID
+                AND ue.eventID = e.id"
+                );
+
+            $query->bindParam(':userID', $userID);
+
+            $query->execute();
+            $results = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            $outputJSON = array('events'=>$results);
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            echo "Error in getEventsForUser";
+        }
+    });
+
+
 $app->run();
 ?>
