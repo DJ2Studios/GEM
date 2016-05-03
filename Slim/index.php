@@ -481,6 +481,33 @@ $app->post('/getEventsForUser',
         }
     });
 
+//should creator id correlate with user id so that you can tell which user made which event?
+//not exactly sure how this endpoint will be implemented
+$app->post('/getEventsCreatedByUser',
+    function () {
+        global $db;
+        try{
+            $userID = $_POST['userID'];
+
+            $query = $db->prepare(
+                "SELECT *
+                FROM event
+                WHERE creatorID = $userID"
+                );
+
+            $query->bindParam(':userID', $userID);
+
+            $query->execute();
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $outputJSON = array('events'=>$result);
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            echo "Error in getEventsCreatedByUser";
+        }
+    });
+
 
 $app->run();
 ?>
