@@ -509,5 +509,57 @@ $app->post('/getEventsCreatedByUser',
     });
 
 
+$app->post('/getEvent',
+    function () {
+        global $db;
+        try{
+            $eventID = $_POST['eventID'];
+
+            $query = $db->prepare(
+                "SELECT *
+                FROM event
+                WHERE id = $eventID"
+                );
+
+            $query->bindParam(':eventID', $eventID);
+
+            $query->execute();
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $outputJSON = array('event'=>$result);
+            echo json_encode($outputJSON);
+        }
+        catch (PDOException $e) {
+            echo "Error in getEvent";
+        }
+    });
+
+$app->post('/getCommentsForEvent',
+    function () {
+        global $db;
+        try{
+            $eventID = $_POST['eventID'];
+
+            $query = $db->prepare(
+                "SELECT c.id, c.text, c.creatorID, c.rating, c.replyID
+                FROM event e, comments c
+                WHERE e.id = $eventID
+                AND e.id = c.eventID"
+                );
+
+            $query->bindParam(':eventID', $eventID);
+
+            $query->execute();
+
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $outputJSON = array('comments'=>$result);
+            echo json_encode($outputJSON);
+
+        }
+        catch (PDOException $e) {
+            echo "Error in getCommentsForEvent";
+        }
+    });
+
 $app->run();
 ?>
