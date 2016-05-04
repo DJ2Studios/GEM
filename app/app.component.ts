@@ -13,7 +13,7 @@ import {EventService} from './event.service.ts';
 	selector: 'application',
 	template: `
 		<navbar></navbar>
-		<sidebar id="sidebar-wrapper"></sidebar>
+		<sidebar id="sidebar-container"></sidebar>
 		<router-outlet></router-outlet>
 	`,
 	styleUrls: ['views/css/navigation.css'],

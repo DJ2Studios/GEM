@@ -32,7 +32,6 @@ System.register(['angular2/core', 'angular2/router', './event.service.ts'], func
                 EventPageComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     var id = +this._routeParams.get('id');
-                    console.log(id + " " + typeof id);
                     this._eventService.getEvent(id)
                         .then(function (event) { return _this.event = event; });
                 };

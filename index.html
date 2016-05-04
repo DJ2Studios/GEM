@@ -26,6 +26,10 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+    <!-- CALENDAR -->
+    <script src="views/js/codebase/dhtmlxscheduler.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="views/js/codebase/dhtmlxscheduler_flat.css" type="text/css" media="screen" title="no title" charset="utf-8">
+
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -34,6 +38,9 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- LOADING ANIMATION -->
+    <link rel="stylesheet" href="views/css/loading.css">
 
     <!-- 2. Configure Angular SystemJS -->
     <script>
@@ -49,7 +56,13 @@
 
   <!-- 3. Display the application -->
   <body>
-    <application>Loading...</application> <!-- Loading screen goes here-->
+    <application style="font-family:'Segoe UI'; font-weight: 100;">
+        <div id="load-text">Loading...</div>
+        <div id="loader">
+            <div id="box"></div>
+            <div id="hill"></div>
+        </div>
+    </application> <!--  Loading screen goes here -->
   </body>
 </html>
 

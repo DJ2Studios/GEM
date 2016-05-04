@@ -6,14 +6,7 @@ import {Event} from './event.ts'
 
 @Component({
 	selector: 'page-home',
-	template: `
-		<div class="flex header-image"> <span> Welcome, User </span> </div>
-		<div class="flex">
-				<ul class="event-wrapper">
-					<li *ngFor="#event of events" [routerLink]="['Event', {'id': event.id }]" class="event-block"> {{event.title}} </li>
-					<li class="event-block create-event"> + </li>
-				</ul>
-		</div>`,
+	templateUrl: ['views/html/homepage.html'],
 	styleUrls: ['views/css/pages.css'],
 	directives: [ROUTER_DIRECTIVES]
 })

@@ -48,7 +48,7 @@ System.register(['angular2/core', 'angular2/router', './navbar.component.ts', '.
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'application',
-                        template: "\n\t\t<navbar></navbar>\n\t\t<sidebar id=\"sidebar-wrapper\"></sidebar>\n\t\t<router-outlet></router-outlet>\n\t",
+                        template: "\n\t\t<navbar></navbar>\n\t\t<sidebar id=\"sidebar-container\"></sidebar>\n\t\t<router-outlet></router-outlet>\n\t",
                         styleUrls: ['views/css/navigation.css'],
                         providers: [event_service_ts_1.EventService],
                         directives: [router_1.ROUTER_DIRECTIVES, navbar_component_ts_1.NavbarComponent, sidebar_component_ts_1.SidebarComponent, homepage_component_ts_1.HomePageComponent, eventpage_component_ts_1.EventPageComponent, calendarpage_component_ts_1.CalendarPageComponent, userpage_component_ts_1.UserPageComponent]

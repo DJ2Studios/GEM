@@ -1,11 +1,13 @@
-<div id="sidebar">
-	<h2>Your Events</h2>
-	<ul>
-		<li *ngFor="#event of events" [routerLink]="['Event', {'id': event.id }]" class="eventList">
-			<h3> {{event.title}} </h3>
-		</li>
-	</ul>
-</div>
-<div class="expand" (click)="toggle()">
-	<img id="sidebar-icon" src="../img/svg/arrows.svg" alt=""/>
+<div id="sidebar-wrapper">
+	<div id="sidebar">
+		<h2>Your Events</h2>
+		<ul>
+			<li *ngFor="#event of events" [routerLink]="['Event', {'id': event.id }]" class="eventList">
+				<h3> {{event.title}} </h3>
+			</li>
+		</ul>
+	</div>
+	<div class="expand" (click)="toggle()">
+		<img id="sidebar-icon" src="../img/svg/arrows.svg" alt=""/>
+	</div>
 </div>

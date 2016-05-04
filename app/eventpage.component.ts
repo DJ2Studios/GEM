@@ -21,7 +21,6 @@ export class EventPageComponent {
 	
 	ngOnInit() {
 		let id = +this._routeParams.get('id');
-		console.log(id + " " + typeof id);
 		this._eventService.getEvent(id)
 			.then(event => this.event = event);
 	}

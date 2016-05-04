@@ -25,10 +25,18 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     console.log(window.history);
                     window.history.back();
                 };
+                CalendarPageComponent.prototype.ngOnInit = function () {
+                    console.log("Loading calendar");
+                    scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+                    scheduler.init('scheduler_here', new Date(2015, 0, 10), "week");
+                };
+                CalendarPageComponent.prototype.resize = function () {
+                    scheduler.setLightboxSize();
+                };
                 CalendarPageComponent = __decorate([
                     core_1.Component({
                         selector: 'page-calendar',
-                        template: "<button (click)=\"goBack()\">Back</button>\n\tHere you can view and (maybe update it if we want to do this feature?) your calendar"
+                        templateUrl: ['views/html/calendar.html']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], CalendarPageComponent);

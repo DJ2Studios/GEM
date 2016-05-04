@@ -40,7 +40,7 @@ System.register(['angular2/core', 'angular2/router', './event.service.ts'], func
                 HomePageComponent = __decorate([
                     core_1.Component({
                         selector: 'page-home',
-                        template: "\n\t\t<div class=\"flex header-image\"> <span> Welcome, User </span> </div>\n\t\t<div class=\"flex\">\n\t\t\t\t<ul class=\"event-wrapper\">\n\t\t\t\t\t<li *ngFor=\"#event of events\" [routerLink]=\"['Event', {'id': event.id }]\" class=\"event-block\"> {{event.title}} </li>\n\t\t\t\t\t<li class=\"event-block create-event\"> + </li>\n\t\t\t\t</ul>\n\t\t</div>",
+                        templateUrl: ['views/html/homepage.html'],
                         styleUrls: ['views/css/pages.css'],
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
