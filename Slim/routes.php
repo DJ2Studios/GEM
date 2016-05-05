@@ -1,7 +1,7 @@
 <?php
 // Routes
 
-require 'vendor/autoload.php';
+//require 'vendor/autoload.php';
 $app = new \Slim\Slim();
 
 //$app->get('/[{name}]', function ($request, $response, $args) 
