@@ -3,42 +3,43 @@
 <head>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/index.js"></script>
 </head>
 <body>
     <!-- Nav bar -->
     <header id="header">
         <nav id="nav">
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="#navplace">Home</a></li>
                 <li><a href="#gem">GEM</a></li>
                 <li><a href="#developers">Developers</a></li>
-                <li id="login"><a href="#home">Login/Sign Up</a></li>
+                <li id="login"><div class="fb-login-button" data-max-rows="1" data-size="large" data-auto-logout-link="true">Login/Sign Up with Facebook</div></li>
             </ul>
         </nav>
     </header>
     <div id="navplace"></div>
     <!-- Slides -->
-    <div id="home" class="slides">
+    <div id="home" class="slides home_box">
         <div id="home_content">
-            <div id="logo"></div>
-            <div id="gem_name"></div>
-            <div id="home_description"></div>
+            <div id="logo"><img src="res/logo.png"></div>
+            <div id="home_description">Lorem ipsum dolor sit amet </div>
         </div>
     </div>
-    <div id="gem" class="slides">
-        <table>
-            <tr>
-            <td id="gem_schedule" class="cell">
+    <div id="gem" class="slides flex_container">
+        <div class="flex_item content_flex_container">
+            <img src="res/vote_icon.png" class="content" height="100" width="100">
+            <p class="gem_description">A polling system that allows event creators to chooose the best time for the event.</p>
+        </div>
+        <div class="flex_item content_flex_container">
+            <img src="res/comment_icon.png" class="content" height="100" width="100">
+            <p class="gem_description">Comment threads so potential attendees can talk ask questions or make suggestions to the event creator.</p>
+        </div>
+        <div class="flex_item content_flex_container">
+            <img src="res/calendar_icon.png" class="content" height="100" width="100">
+            <p class="gem_description">Calendar to see all the events in one easy to read place.</p>
+        </div>
 
-            </td>
-            <td id="gem_comment" class="cell">
 
-            </td>
-            <td id="gem_calendar" class="cell">
-
-            </td>
-            </tr>
-        </table>
     </div>
     <div id="developers" class="slides"></div>
 
