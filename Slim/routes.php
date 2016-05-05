@@ -80,7 +80,7 @@ $app->post('/login',
                     echo json_encode($outputJSON);
 		}
             else
-		}
+            	{
                     $outputJSON["id"] = -1;
 		    echo json_encode($outputJSON);
 		}
