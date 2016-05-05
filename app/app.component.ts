@@ -6,6 +6,7 @@ import {SidebarComponent} from './sidebar.component.ts';
 import {HomePageComponent} from './homepage.component.ts';
 import {EventPageComponent} from './eventpage.component.ts';
 import {CalendarPageComponent} from './calendarpage.component.ts';
+import {CreateEventPageComponent} from './createeventpage.component.ts';
 import {UserPageComponent} from './userpage.component.ts';
 import {EventService} from './event.service.ts';
 
@@ -14,11 +15,13 @@ import {EventService} from './event.service.ts';
 	template: `
 		<navbar></navbar>
 		<sidebar id="sidebar-container"></sidebar>
-		<router-outlet></router-outlet>
+		<div class="page">
+			<router-outlet></router-outlet>
+		</div>
 	`,
 	styleUrls: ['views/css/navigation.css'],
 	providers: [EventService],
-	directives: [ROUTER_DIRECTIVES, NavbarComponent, SidebarComponent, HomePageComponent, EventPageComponent, CalendarPageComponent, UserPageComponent]
+	directives: [ROUTER_DIRECTIVES, NavbarComponent, SidebarComponent, HomePageComponent, CreateEventPageComponent, EventPageComponent, CalendarPageComponent, UserPageComponent]
 })
 
 @RouteConfig([
@@ -34,10 +37,15 @@ import {EventService} from './event.service.ts';
 		component: EventPageComponent
 	},
 	{
+		path: '/createevent',
+		name: 'CreateEvent',
+		component: CreateEventPageComponent
+	},
+	{
 		path: '/calendar',
 		name: 'Calendar',
 		component: CalendarPageComponent
-	}
+	},
 	{
 		path: '/user',
 		name: 'User',

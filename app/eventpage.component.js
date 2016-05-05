@@ -41,7 +41,8 @@ System.register(['angular2/core', 'angular2/router', './event.service.ts'], func
                 EventPageComponent = __decorate([
                     core_1.Component({
                         selector: 'page-event',
-                        template: "\n\t\t<button (click)=\"goBack()\">Back</button>\n\t \t<div *ngIf=\"event\"> Welcome to your {{event.title}} event page! </div>\n\t\t\n\t"
+                        styleUrls: ['views/css/pages.css'],
+                        templateUrl: ['views/html/eventpage.html']
                     }), 
                     __metadata('design:paramtypes', [event_service_ts_1.EventService, router_1.RouteParams])
                 ], EventPageComponent);

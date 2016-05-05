@@ -10,12 +10,11 @@
     </div>
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="nav navbar-nav navbar-left">
-        <li [routerLink]="['User']"><a href="#"><i class="fa fa-user"></i>This is you!</a></li>
+        <li [routerLink]="['User']"><a href="#"><img src="img/svg/circle.svg" class="nav-svg" alt=""><span style="margin-left:7px"> Hello, User</span></a></li>
        </ul>
        <ul class="nav navbar-nav navbar-right">
-        <li [routerLink]="['Calendar']"><a href="#"><i  class="fa fa-calendar"></i></a></li>
-        <li><a href="#"><i class="fa fa-exclamation-circle"></i></a></li> <!-- This needs to be a dropdown -->
-        <li><a href="#"><i class="fa fa-cog"></i></a></li> <!-- This needs to be a dropdown -->
+        <!-- <li [routerLink]="['Calendar']"><a href="#"><img src="img/svg/time.svg" alt="" class="nav-svg"></a></li> -->
+        <li class="cta-button" [routerLink]="['CreateEvent']"><a href="#">Create Event</a></li> <!-- This needs to be a dropdown -->
        </ul>
     </div>
 </nav>

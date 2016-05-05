@@ -29,7 +29,7 @@ export class SidebarComponent {
 		if (!this.show) {
 			$("#sidebar-wrapper").css({ "margin-left": "-300px" });
 			$("#sidebar-container").css({ "width": "30px" });
-			$("main-page").css({ "width": "calc(100% - 30px)" });
+			$(".page").css({ "width": "calc(100% - 30px)" });
 			scheduler.setLightboxSize();
 			$("#sidebar-wrapper").one('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
 				function() {
@@ -39,7 +39,7 @@ export class SidebarComponent {
 		}
 		else {
 			$("#sidebar-wrapper").css({ "margin-left": "0" });
-			$("main-page").css({ "width": "calc(100% - 315px)" });
+			$(".page").css({ "width": "calc(100% - 315px)" });
 			$(".expand").css({ "width": "15px" });
 			$("#sidebar-container").css({ "width": "315px" });
 			$("#sidebar-icon").css({ "opacity": "0" });

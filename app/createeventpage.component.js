@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/router', './event.service.ts'], func
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, router_1, event_service_ts_1;
-    var HomePageComponent;
+    var CreateEventPageComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -24,32 +24,32 @@ System.register(['angular2/core', 'angular2/router', './event.service.ts'], func
                 event_service_ts_1 = event_service_ts_1_1;
             }],
         execute: function() {
-            HomePageComponent = (function () {
-                function HomePageComponent(_eventService) {
+            CreateEventPageComponent = (function () {
+                function CreateEventPageComponent(_eventService, _routeParams) {
                     this._eventService = _eventService;
+                    this._routeParams = _routeParams;
                 }
-                HomePageComponent.prototype.ngOnInit = function () {
+                CreateEventPageComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    this._eventService.getEvents()
-                        .then(function (events) { return _this.events = events; });
+                    var id = +this._routeParams.get('id');
+                    this._eventService.getEvent(id)
+                        .then(function (event) { return _this.event = event; });
                 };
-                HomePageComponent.prototype.goBack = function () {
-                    console.log(window.history);
+                CreateEventPageComponent.prototype.goBack = function () {
                     window.history.back();
                 };
-                HomePageComponent = __decorate([
+                CreateEventPageComponent = __decorate([
                     core_1.Component({
-                        selector: 'page-home',
-                        template: "\n\t\t<div class=\"flex header-image\"> <span> Welcome, User </span> </div>\n\t\t<div class=\"flex\">\n\t\t\t\t<ul class=\"event-wrapper\">\n\t\t\t\t\t<li *ngFor=\"#event of events\" [routerLink]=\"['Event', {'id': event.id }]\" class=\"event-block\"> {{event.title}} </li>\n\t\t\t\t\t<li class=\"event-block create-event\"> + </li>\n\t\t\t\t</ul>\n\t\t</div>",
-                        styleUrls: ['components/css/pages.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        selector: 'page-createevent',
+                        styleUrls: ['views/css/pages.css'],
+                        templateUrl: ['views/html/createevent.html']
                     }), 
-                    __metadata('design:paramtypes', [event_service_ts_1.EventService])
-                ], HomePageComponent);
-                return HomePageComponent;
+                    __metadata('design:paramtypes', [event_service_ts_1.EventService, router_1.RouteParams])
+                ], CreateEventPageComponent);
+                return CreateEventPageComponent;
             }());
-            exports_1("HomePageComponent", HomePageComponent);
+            exports_1("CreateEventPageComponent", CreateEventPageComponent);
         }
     }
 });
-//# sourceMappingURL=homepage.component.js.map
+//# sourceMappingURL=createeventpage.component.js.map

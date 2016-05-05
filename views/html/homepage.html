@@ -3,10 +3,10 @@
     <ul class="event-wrapper">
         <li *ngFor="#event of events" [routerLink]="['Event', {'id': event.id }]" class="event-block col">
             <div class="fullWidth row">
-	            <div class="oneThird event-block-thumbnail">
-	                <i class="fa fa-picture-o" aria-hidden="true"></i>
+	            <div class="half event-block-thumbnail">
+	                <img src="{{event.image}}" alt="">
 	            </div>
-	            <div class="twoThird event-block-title col">
+	            <div class="half event-block-title col">
 	                {{event.title}}
 	            </div>
             </div>
@@ -22,6 +22,6 @@
                 </div>
             </div>
         </li>
-        <li class="event-block create-event"> + </li>
+        <!-- <li class="event-block create-event"> + </li> -->
     </ul>
 </div>

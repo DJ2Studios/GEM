@@ -4,19 +4,30 @@ html,body,application {
 	display:block;
 	margin:0;
 	padding:0;
+	background-color:#f8f8f8;
 }
-navbar {
-	height:75px;
+.page {
+	transition:all 0.55s ease;
+	height:calc(100% - 75px);
+	width:calc(100% - 315px);
+	float:right;
 }
 .navbar {
 	height:75px;
-	background-color:#2B2B2B;
+	background-color:#333746;
 	border-radius:0;
-	padding-top:5px;
 	margin-bottom:0;
 }
-.navbar-default .navbar-nav>li>a{
-	color:#00ABFF;
+#mainNav {
+	height:75px !important;
+}
+
+.navbar-nav>li>a{
+	color:#fafafa;
+}
+
+.navbar .navbar-nav>li>a:hover, .navbar .navbar-nav>li>a:focus{
+	background-color:initial;
 }
 .navbar-center {
 	position:absolute;
@@ -27,13 +38,24 @@ navbar {
 .navbar-center img {
 	width:100px;
 }
-.nav i {
-	font-size:16pt;
+.navbar-right, .navbar-center, .navbar-left {
+	margin:0;
+	height:100%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.navbar-left {
+	font-size:14pt;
+}
+
+.nav-svg {
+	width:3.0em;
 }
 
 .eventList {
 	cursor:pointer;
-	background-color:#7D7D7D;
+	background-color:#738384;
 	height:100px;
 	margin:10px;
 }
@@ -41,7 +63,7 @@ navbar {
 	display:inline-block;
 	width:15px;
 	height:100%;
-	background-color:black;
+	background-color:#1C1E27;
 	cursor:pointer;
 	transition:all 0.3s ease;
 }
@@ -57,7 +79,7 @@ navbar {
 	float:left;
 	width:300px;
 	height:100%;
-	background-color:#505050;
+	background-color:#404456;
 	color:white;
 	text-align:center;
 	overflow-y:scroll;
@@ -112,5 +134,28 @@ main-page {
 }
 
 navbar {
+	font-size:12pt;
 	display:block;
+	height:75px;
 }
+
+.cta-button {
+	background-color:#CC433F;
+	border-radius:2px;
+	color:white;
+	margin-right:10px;
+	transition: background-color 0.4s ease;
+	border: 2px solid #cc433f;
+	border-color:#CC433F;
+}
+.cta-button:hover {
+	
+	background-color:rgba(0,0,0,0);
+	border: 2px solid #cc433f;
+}
+
+.cta-button a {
+	color:#f2f2f2 !important;
+	text-shadow:none;
+}
+

@@ -33,9 +33,9 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             }());
             exports_1("EventService", EventService);
             EVENTS = [
-                { 'id': 11, 'title': 'Torchys with friends' },
-                { 'id': 12, 'title': 'EWB General Meeting' },
-                { 'id': 13, 'title': 'Pickup volleyball game' }
+                { 'id': 11, 'title': 'Torchys with friends', 'image': 'img/torchys.jpg' },
+                { 'id': 12, 'title': 'EWB General Meeting', 'image': 'img/ewb.png' },
+                { 'id': 13, 'title': 'Pickup volleyball game', 'image': 'img/sand-volleyball.jpg' }
             ];
         }
     }
