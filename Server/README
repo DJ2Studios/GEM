@@ -1,0 +1,12 @@
+ppk file is for PuTTy use only
+pem file is for use through console
+
+
+DNS: ubuntu@ec2-52-36-89-224.us-west-2.compute.amazonaws.com
+IP: 52.36.89.224
+
+
+These are all file paths from screen as soon as you log into server
+
+Git directory: cd /GEM 
+Slim directory on server: ../../var/www/zero-to-slim.dev
