@@ -1,2 +1,0 @@
-DNS: ubuntu@ec2-52-36-89-224.us-west-2.compute.amazonaws.com
-IP: 52.36.89.224
