@@ -107,3 +107,9 @@ table {
 #developers {
     background-color: #61619C;
 }
+.dev_desc {
+    color: white;
+    text-align: center;
+    max-width: 50%;
+    font-size: 20px;
+}
